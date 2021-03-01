@@ -1,0 +1,11 @@
+<?php
+use Ratchet\Server\IoServer;
+use Ratchet\Http\HttpServer;
+use Ratchet\WebSocket\WsServer;
+use MyApp\Socket;
+
+require 'vendor/autoload.php';
+
+$server = IoServer::factory(new HttpServer(new WsServer(new Socket())), 8082);
+
+$server->run();
