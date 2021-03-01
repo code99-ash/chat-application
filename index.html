@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-grid.min.css">
     <title>Document</title>
     <style>
         .height-90 {
@@ -27,7 +27,7 @@
 <body class="bg-secondary">
     <div class="container-fluid">
         <div class="row">
-            <div class="contact d-none d-md-block col-md-3 bg-light pt-3">
+            <div class="contact d-none d-md-block col-md-4 bg-light pt-3">
                 <!-- <div class="bg-success p-2 mb-2 positon-sticky contact-header">
                     <h5 class="text-center text-light">Contact List</h5>
                 </div> -->
@@ -81,14 +81,17 @@
                 <hr>
 
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
                 
                     <div class="row bg-success height-90">
                         <div class="col-12 p-0">
                             <div class="bg-light d-block p-2">
                                 <h2 class="text-center text-success">Chat Application</h2>
                             </div>
-            
+                            
+                            <div id="content" class="row">
+                                
+                            </div>
             
                         </div>
                     </div>
@@ -109,8 +112,8 @@
 
 
 
-    <script src="bootstrap/jquery/dist/jquery.min.js"></script>
-    <script src="bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/bootstrap/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script>
         // Create a new WebSocket.
         var socket  = new WebSocket('ws://localhost:8082');
@@ -125,6 +128,7 @@
         socket.onmessage = function(e) {
             // alert( e.data );
             console.log(e.data)
+            document.querySelector('#content').innerHTML += `<div class="col-9 bg-light my-2 ml-auto mr-2 float-right p-3"><p>${e.data}</p></div>`; 
         }
     </script>
 </body>
